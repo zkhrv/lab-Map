@@ -15,12 +15,12 @@ class TestMap:
         test_map.AddEl(10, "Rodger")
         
         copy_map = test_map
-        copy_map.ChangeEl(2, "Sir")
         copy_el = copy_map.ElemetnPoinet(2)
         orig_el = test_map.ElemetnPoinet(2)
         if copy_el is not None and orig_el is not None:
             print("-----------------------------------------------------------")
             print("В оригинале под ключом " + str(orig_el.key) + " хранится значение: " + orig_el.data)
+            copy_map.ChangeEl(2, "Ronald")
             print("А в копии по этим же ключом уже: " + copy_el.data)
             print("-----------------------------------------------------------")
         copy_map.clear()
