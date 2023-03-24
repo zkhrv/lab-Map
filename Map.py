@@ -72,13 +72,14 @@ class Map:
     def AddEl(self, key, data): # метод добавления элемента в дерево, принимает ключ и данные
         self.head = self.insert(self.head, key, data)
 
-    def insert(self, root, key, data): # метод вставки элемента в дерево, принимает корень, ключ и данные
-        if root is None: # если корень не существует, создается новый узел
+    def insert(self, root, key, data): # метод вставки элемента в дерево, принимает узел, ключ и данные
+        if root is None: # если корень не существует, создается новый
             return node(key, data, None, None)
-        elif key < root.key: # если ключ меньше значения корневого узла, элемент добавляется в левое поддерево
-            root.left = self.insert(root.left, key, data)
-        elif key > root.key: # если ключ больше значения корневого узла, элемент добавляется в правое поддерево
-            root.right = self.insert(root.right, key, data)
+            #рекурсивный метод для поиска местарасположения узла в дереве 
+        elif key < root.key: # если ключ меньше значения корневого узла
+            root.left = self.insert(root.left, key, data) # переход к левому поддереву 
+        elif key > root.key: # если ключ больше значения корневого узла 
+            root.right = self.insert(root.right, key, data) # переход к правому поддереву 
         else:
             # если ключ уже существует, выбрасывается ошибка
             raise ValueError("Значению '" + data + "' нужно подобрать другой ключ, т.к. данный - " + str(
@@ -89,7 +90,7 @@ class Map:
     def clear(self):
         # метод очистки дерева
         if self.head is None:
-            print("Сипсок и так уже пуст!")
+            print("Список и так уже пуст!")
         else:
             self.ClearTree(self.head)  # рекурсивный метод очистки дерева
             print("Список очищен.")
